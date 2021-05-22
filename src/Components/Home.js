@@ -2,19 +2,20 @@ import axios from 'axios';
 import { Component } from 'react';
 
 class Home extends Component {
-    state = {input: "", video: [] }
+    state = {input: "", videos: [] }
     
     handleSubmit = async(e) => {
         e.preventDefault();
 
         try {
             const { input } = this.state;
+            const res = axios.get(`https://youtube.googleapis.com/youtube/v3/search?key=${process.env.REACT_APP_API_KEY }`)
+
             debugger
-            const res = await axios.get(`https://youtube.googleapis.com/youtube/v3/search?key=${process.env.REACT_APP_API_KEY}`)
-            debugger
-            this.setState({video: res.data });
+            this.setState({videos: res.data });
+            
         }catch (err) {
-            this.setState({video: [] });
+            this.setState({videos: [] });
         }
         this.setState({input: ""});
     };
@@ -24,17 +25,17 @@ class Home extends Component {
     };
 
     render() {
-        const { input, video } = this.state; 
+        const { input, videos } = this.state; 
         return(
            <section>
-               <form>
+               <form onSubmit={this.handleSubmit}>
                <input type="text" value={input} onChange={this.handleChange} placeholder="Search..." />
                <button type="submit">Search</button>
               </form>
 
               <div>
                   <li>
-                      {video}
+                      {videos}
                   </li>
               </div>
            </section>
