@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Component } from 'react';
 
 class Home extends Component {
-    state = {input: "", video: {} }
+    state = {input: "", video: [] }
     
     handleSubmit = async(e) => {
         e.preventDefault();
@@ -14,7 +14,7 @@ class Home extends Component {
             debugger
             this.setState({video: res.data });
         }catch (err) {
-            this.setState({video: {} });
+            this.setState({video: [] });
         }
         this.setState({input: ""});
     };
