@@ -1,6 +1,6 @@
-import logo from "./logo.svg";
+import { Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
-import { Route } from 'react-router-dom';
+import About from "./Components/About"
 import "./App.css";
 import Home from "./Components/Home"
 
@@ -9,7 +9,8 @@ function App() {
     <div className="App">
       <Navbar />
       <Route exact path="/" component={Home} />
-      {/* <Route path="/about" component={About} /> */}
+      <Route path="/about" component={About} />
+
     </div>
   );
 }
