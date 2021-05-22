@@ -1,0 +1,17 @@
+.NavBarContainer img {
+    width: 80px;
+    height: 80px;
+}
+
+.NavBarContainer a {
+    color:white;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.NavBarContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background:	#FF0000;
+}

@@ -1,5 +1,6 @@
-import logo from "./logo.svg";
+import { Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
+import About from "./Components/About"
 import "./App.css";
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
     <div className="App">
       <Navbar />
       {/* <Route exact path="/" component={Home} /> */}
-      {/* <Route path="/about" component={About} /> */}
+      <Route path="/about" component={About} />
     </div>
   );
 }
