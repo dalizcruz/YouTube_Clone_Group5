@@ -24,28 +24,32 @@ const Video = () => {
   };
 
   const handleName = (e) => {
-      return setName(e.target.value);
+    return setName(e.target.value);
   };
 
   const handleComment = (e) => {
-      return setComment(e.target.value);
+    return setComment(e.target.value);
   };
 
   const opts = {
     height: "400",
-    width: "700",
+    width: "800",
     playerVars: {
-      autoplay: 0,
+      autoplay: 1,
     },
   };
 
   return (
     <section>
-      <YouTube videoId={id} onReady={_onReady} opts={opts} />
-      <br />
-      <br />
+      <YouTube
+        className="section"
+        videoId={id}
+        onReady={_onReady}
+        opts={opts}
+      />
+
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="label">
           Name
           <input
             type="text"
@@ -55,8 +59,7 @@ const Video = () => {
             value={name}
           />
         </label>
-        <br />
-        <br />
+
         <label>
           Comment
           <input
@@ -67,14 +70,15 @@ const Video = () => {
             value={comment}
           />
         </label>
-        <br />
-        <br />
-        <button type="submit">Submit</button>
+
+        <button className="button" type="submit">
+          Submit
+        </button>
       </form>
 
       <ul>
         {commentSection.map((comment) => {
-          return <li>{comment}</li>;
+          return <li className="comment">{comment}</li>;
         })}
       </ul>
     </section>
