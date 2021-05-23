@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+ul{
+  list-style-type: none;
+}
+
+.container{
+  margin-left: 250px;
+  margin-right: 250px;
+}
+
+/* .songs{
+  display:grid;
+  grid-template-rows: repeat(1fr);
+} */
+
+.thumbnails{
+  margin-right: 700px;
+}

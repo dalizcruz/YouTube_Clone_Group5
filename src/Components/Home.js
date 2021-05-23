@@ -43,9 +43,9 @@ const Home = () => {
 
       
         {showThumbnails ? (
-        <ul>
+        <ul className="songs">
           {videos.map((item) => {
-                return <li key={item.id.videoId}> <img alt="thumbnails" src={item.snippet.thumbnails.default.url} /> <Link to={`/video/${item.id.videoId}`}>{item.snippet.title}</Link> </li>
+                return <li key={item.id.videoId}> <img className="thumbnails" alt="thumbnails" src={item.snippet.thumbnails.default.url} /> <Link to={`/video/${item.id.videoId}`}>{item.snippet.title}</Link> </li>
           })}
         </ul> )
         
