@@ -11,10 +11,7 @@ const Home = () => {
   const fetchVideos = async () => {
     try {
       const res = await axios.get(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&key=${process.env.REACT_APP_API_KEY}&type=video&q=${input}`
-      );
-
-      debugger;
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&key=${process.env.REACT_APP_API_KEY}&type=video&q=${input}`);
       setVideos(res.data.items);
     } catch (err) {
       setVideos([]);
@@ -25,6 +22,7 @@ const Home = () => {
     e.preventDefault();
     fetchVideos();
     setShowThumbnails(true)
+    setInput("")
   };
 
    const handleChange = (e) => {
