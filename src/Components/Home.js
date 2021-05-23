@@ -50,6 +50,7 @@ const Home = () => {
                 return <li key={item.id.videoId}> <img alt="thumbnails" src={item.snippet.thumbnails.default.url} /> <Link to={`/video/${item.id.videoId}`}>{item.snippet.title}</Link> </li>
           })}
         </ul> )
+        
         :<ul></ul> }
       
     </section>
