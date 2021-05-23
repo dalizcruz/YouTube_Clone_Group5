@@ -1,7 +1,8 @@
 const About = () => {
   return (
     <section>
-      <div>
+        <main className="container">
+        <div>
         <h1>Project Description</h1>
         <p>
           {" "}
@@ -49,12 +50,15 @@ const About = () => {
 
         <div>
             <h2>Daliz Cruz</h2>
-            <p></p>
+            <p>Dalíz Cruz is a full-stack web developer fellow at the Pursuit Fellowship Program in New York City. 
+              Dalíz enjoys designing and creating cool things on the web and is passionate about science, 
+              music, and art. Due to the pandemic, she has growing interest in working in health tech and optimizing personal and preventative care.</p>
             <a href="http://github.com/dalizcruz">GitHub Link</a>
         </div>
-
+ 
 
       </div>
+      </main>
     </section>
   );
 };
