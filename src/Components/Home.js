@@ -1,46 +1,59 @@
-import axios from 'axios';
-import { Component } from 'react';
+import axios from "axios";
+import { Link } from "react-router-dom";
+import {useState} from "react"
+require("dotenv").config();
 
-class Home extends Component {
-    state = {input: "", videos: [] }
-    
-    handleSubmit = async(e) => {
-        e.preventDefault();
+const Home = () => {
+  const [input, setInput] = useState("");
+  const [videos, setVideos] = useState([]);
+  const [showThumbnails, setShowThumbnails] = useState(false);
 
-        try {
-            const { input } = this.state;
-            const res = axios.get(`https://youtube.googleapis.com/youtube/v3/search?key=${process.env.REACT_APP_API_KEY }`)
+  const fetchVideos = async () => {
+    try {
+      const res = await axios.get(
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&key=${process.env.REACT_APP_API_KEY}&type=video&q=${input}`
+      );
 
-            debugger
-            this.setState({videos: res.data });
-            
-        }catch (err) {
-            this.setState({videos: [] });
-        }
-        this.setState({input: ""});
+      debugger;
+      setVideos(res.data.items);
+    } catch (err) {
+      setVideos([]);
     };
+  };
 
-    handleChange = async (e) => {
-        this.setState({input: e.target.value});
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    fetchVideos();
+    setShowThumbnails(true)
+  };
 
-    render() {
-        const { input, videos } = this.state; 
-        return(
-           <section>
-               <form onSubmit={this.handleSubmit}>
-               <input type="text" value={input} onChange={this.handleChange} placeholder="Search..." />
-               <button type="submit">Search</button>
-              </form>
+   const handleChange = (e) => {
+    setInput(e.target.value)
+  };
 
-              <div>
-                  <li>
-                      {videos}
-                  </li>
-              </div>
-           </section>
-        )
-    }
-}
+  return (
+    <section>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={input}
+          onChange={handleChange}
+          placeholder="Search..."
+        />
+        <button type="submit">Search</button>
+      </form>
+
+      
+        {showThumbnails ? (
+        <ul>
+          {videos.map((item) => {
+                return <li key={item.id.videoId}> <img alt="thumbnails" src={item.snippet.thumbnails.default.url} /> <Link to={`/video/${item.id.videoId}`}>{item.snippet.title}</Link> </li>
+          })}
+        </ul> )
+        :<ul></ul> }
+      
+    </section>
+  );
+};
 
 export default Home;
