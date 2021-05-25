@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
 
-const Video = () => {
+const Video = (props) => {
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
   const [commentSection, setCommentSection] = useState([]);
@@ -20,7 +20,6 @@ const Video = () => {
     ]);
     setName("");
     setComment("");
-    debugger;
   };
 
   const handleName = (e) => {
@@ -39,8 +38,13 @@ const Video = () => {
     },
   };
 
+  const goBack = () => {
+    props.history.goBack();
+  };
+
   return (
     <section>
+      <button onClick={goBack}>Back to Search</button>
       <YouTube
         className="section"
         videoId={id}
