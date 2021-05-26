@@ -47,7 +47,7 @@ const Video = (props) => {
       <button onClick={goBack}>Back to Search</button>
       <YouTube
         className="section"
-        videoId={id}
+        videoId= {id}
         onReady={_onReady}
         opts={opts}
       />
