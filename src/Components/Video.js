@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
 
+
 const Video = (props) => {
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
@@ -14,16 +15,18 @@ const Video = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCommentSection((prevCommentSection) => [
+    if (name.length >= 1 && comment.length >= 1){
+      setCommentSection((prevCommentSection) => [
       ...prevCommentSection,
       `${name}:${comment}`,
     ]);
-    setName("");
-    setComment("");
+    }
+    // setName("");
+    // setComment("");
   };
 
   const handleName = (e) => {
-    return setName(e.target.value);
+      return setName(e.target.value);
   };
 
   const handleComment = (e) => {
@@ -39,7 +42,8 @@ const Video = (props) => {
   };
 
   const goBack = () => {
-    props.history.goBack();
+    return props.history.goBack();
+  
   };
 
   return (
@@ -79,6 +83,7 @@ const Video = (props) => {
           Submit
         </button>
       </form>
+
 
       <ul>
         {commentSection.map((comment) => {
