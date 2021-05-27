@@ -21,8 +21,6 @@ const Video = (props) => {
       `${name}:${comment}`,
     ]);
     }
-    // setName("");
-    // setComment("");
   };
 
   const handleName = (e) => {
